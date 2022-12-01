@@ -27,6 +27,14 @@ public abstract class User{
     public void setName(String name) {
         this.name = name;
     }
+    
+    public String getPhone() {
+        return PhoneNumber;
+    }
+
+    public void setPhone(String PhoneNumber) {
+        this.PhoneNumber = PhoneNumber;
+    }
 
     public int getId() {
         return id;
