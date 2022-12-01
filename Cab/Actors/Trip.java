@@ -72,4 +72,19 @@ public class Trip{
     public void setId(int id) {
         this.id = id;
     }
+
+    public void getTripDetails(int id){
+        System.out.println(" ");
+        System.out.println("---------------------------------------------------------------------------------------");
+        System.out.println("User Found !!");
+        System.out.println(" ");
+        System.out.println("Trip Details - ");
+        System.out.println("ID           \t : \t"+this.id);
+        System.out.println("Date         \t : \t"+this.date);
+        System.out.println("Source       \t : \t"+this.source);
+        System.out.println("Destination  \t : \t"+this.destination);
+        System.out.println("Time         \t : \t"+this.time);
+        System.out.println(" ");
+        System.out.println("---------------------------------------------------------------------------------------");
+    }
 }
