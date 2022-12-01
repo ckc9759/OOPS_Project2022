@@ -4,6 +4,7 @@ public class Project {
 		char c;
 		public bool Running;
 		while(Running)
+		{
 		switch (c) 
 		{
 			case S : S();
@@ -29,6 +30,7 @@ public class Project {
 			default : System.out.println("");
 				break;
 		}
+	}
 	
 		S()
 		{
@@ -93,12 +95,14 @@ class Student
 	phone_number
 	charge
 	object of type requirements
+	bool Login;
 	//Create a constructor
 	
 }
 class Admin{
 	username
 	password
+	Bool Login;
 }
 abstract class List
 {
