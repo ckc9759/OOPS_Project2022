@@ -24,6 +24,8 @@ public class Main{
         String name;
         switch(c){
 
+            // New User is being registered 
+            // Add him in a list
             case 'S': System.out.println("Enter your name, ID and phone no.");
             name = in.next();
             id=in.nextInt();
@@ -32,6 +34,9 @@ public class Main{
             NewStudent.ShowDetails();
             break;
 
+
+            // New trip is getting created 
+            // Add it into a List
             case 'T':System.out.println("Make a new trip (y/n)....");
             char trip=in.next().charAt(0);
             if(trip=='y'){
@@ -51,6 +56,33 @@ public class Main{
             else{
                 System.out.println("Good Bye !!");
             }
+            break;
+
+            case 'C':System.out.println("Enter the ID to view the details of your Trip");
+
+            // If the ID has an active trip, show the details using showDetails()
+            // How to call that method using the right parameters ??
+            // How to get the parameters using the ID (Getters and Setters)
+            // Appropriate message displayed if ID has no linked travels
+
+            id=in.nextInt();
+            break;
+
+            case 'A':System.out.println("Enter your ID to accept a trip");
+
+            // flag value set to 1 : Accepted trip
+            // showDetails() function call
+            // if user has an active trip, give him option to accept
+            // otherwise proper message : Please create a trip first !!
+            id=in.nextInt();
+            break;
+
+            case 'R':System.out.println("Enter your ID to reject a trip");
+            // flag value set to 0 : Rejected trip
+            // showDetails() function call
+            // if user has an active trip, give him option to reject
+            // otherwise proper message : Please create a trip first !!
+            id=in.nextInt();
             break;
         }
         in.close();
