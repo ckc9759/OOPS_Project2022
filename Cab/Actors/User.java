@@ -1,6 +1,6 @@
-package cab.actors
+package Actors;
 
-public abstract class User{
+public class User{
     private String name;
     private int id;
     private int PhoneNumber;
@@ -11,13 +11,17 @@ public abstract class User{
         this.PhoneNumber=PhoneNumber;
     }
     
-    public ShowDetails(){
-        System.out.println("Registration Successful\n")
-        System.out.println("Entered Details : \n");
-        System.out.println("Name : \n"+name);
-        System.out.println("ID : \n"+id);
-        System.out.println("Phone no. : \n"+PhoneNumber);
-        
+    public void ShowDetails(){
+        System.out.println(" ");
+        System.out.println("---------------------------------------------------------------------------------------");
+        System.out.println("Registration Successful");
+        System.out.println(" ");
+        System.out.println("Entered Details - ");
+        System.out.println("Name     \t : \t"+this.name);
+        System.out.println("ID       \t : \t"+this.id);
+        System.out.println("Phone no.\t : \t"+this.PhoneNumber);
+        System.out.println(" ");
+        System.out.println("---------------------------------------------------------------------------------------");
     }
     
     public String getName() {
@@ -28,11 +32,11 @@ public abstract class User{
         this.name = name;
     }
     
-    public String getPhone() {
+    public int getPhone() {
         return PhoneNumber;
     }
 
-    public void setPhone(String PhoneNumber) {
+    public void setPhone(int PhoneNumber) {
         this.PhoneNumber = PhoneNumber;
     }
 
