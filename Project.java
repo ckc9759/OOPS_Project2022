@@ -1,8 +1,31 @@
 public class Project {
 	public static void main(String[] args)
 	{
-		switch case
-	}
+		char c;
+		switch (c) 
+		{
+			case S : S();
+				 break;
+			case T : T();
+				break;
+			case C : C();
+				break;
+			case A : A();
+				break;
+			case R : R();
+				break;
+			case L1 : L1();
+				break;
+			case AC : AC();
+				break;
+			case AS : AS();
+				break;
+			case E :E();
+				break;
+			case L2 :L2();
+				break;
+			
+		}
 	
 		S()
 		{
