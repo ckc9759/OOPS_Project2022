@@ -2,6 +2,8 @@ public class Project {
 	public static void main(String[] args)
 	{
 		char c;
+		public bool Running;
+		while(Running)
 		switch (c) 
 		{
 			case S : S();
@@ -24,7 +26,8 @@ public class Project {
 				break;
 			case L2 :L2();
 				break;
-			
+			default : System.out.println("");
+				break;
 		}
 	
 		S()
