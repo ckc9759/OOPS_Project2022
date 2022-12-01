@@ -47,6 +47,7 @@ public class Project {
 			 *  Map it with list of Trips
 			 *  create one more map of ID,trip			
 			*/
+			Requirement req = new Requirement(date,src,dest,time);
 		}
 		C()
 		{
@@ -109,17 +110,24 @@ abstract class List
  static List of students// map of <ID, student>
  static List of Admin // map of <username , password>
 }
-class Requirements
+class Reqirement
 {
 	date
 	source
 	destination
 	time of departure 
+	Requirement(date,src,dest,time)
+	{
+		this.date = date;
+		this.src=src;
+		this.dest=dest;
+		this.time=time;
+	}
 }
 class Trip
 {
 	trip ID
 	Cab ID
-	list<travellers>
+	List<Student> = new Arraylist();
 	
 }
