@@ -40,7 +40,7 @@ public class Main {
 
                     // New User is being registered
                     // Add him in a list
-                    case 'S':
+                    case "S":
                         System.out.println("Enter your name, ID and phone no.");
                         name = in.next();
                         id = in.nextInt();
@@ -56,7 +56,7 @@ public class Main {
 
                     // New trip is getting created
                     // Add it into a List
-                    case 'T':
+                    case "T":
                         System.out.println("Make a new trip (y/n)....");
                         char trip = in.next().charAt(0);
                         if (trip == 'y') {
@@ -78,7 +78,7 @@ public class Main {
                         }
                         break;
 
-                    case 'C':
+                    case "C":
                         System.out.println("Enter the ID to view the details of your Trip");
 
                         // If the ID has an active trip, show the details using showDetails()
@@ -89,7 +89,7 @@ public class Main {
                         id = in.nextInt();
                         break;
 
-                    case 'A':
+                    case "A":
                         System.out.println("Enter your ID to accept a trip");
 
                         // flag value set to 1 : Accepted trip
@@ -99,7 +99,7 @@ public class Main {
                         id = in.nextInt();
                         break;
 
-                    case 'R':
+                    case "R":
                         System.out.println("Enter your ID to reject a trip");
                         // flag value set to 0 : Rejected trip
                         // showDetails() function call
@@ -107,7 +107,9 @@ public class Main {
                         // otherwise proper message : Please create a trip first !!
                         id = in.nextInt();
                         break;
-                  default:
+                  default :
+                        System.out.println("That is not a valid option");
+                        break;
                 }
                 // try{
                 // student=CabService.RegisterStudent();
