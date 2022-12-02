@@ -1,34 +1,34 @@
 package Actors;
 
-import java.sql.Date;
-import java.sql.Time;
+// import java.sql.Date;
+// import java.sql.Time;
 
-public class Trip{
-    private int id;
+public class Trip {
+    private String id;
     private String date;
     private String source;
     private String destination;
     private String time;
-    
-    public Trip(int id,String date,String source,String destination,String time){
-        this.id=id;
-        this.date=date;
-        this.source=source;
-        this.destination=destination;
-        this.time=time;
+
+    public Trip(String id, String date, String source, String destination, String time) {
+        this.id = id;
+        this.date = date;
+        this.source = source;
+        this.destination = destination;
+        this.time = time;
     }
-    
-    public void ShowDetails(){
+
+    public void ShowDetails() {
         System.out.println(" ");
         System.out.println("---------------------------------------------------------------------------------------");
         System.out.println("Request Registered");
         System.out.println(" ");
         System.out.println("Entered Details - ");
-        System.out.println("ID           \t : \t"+this.id);
-        System.out.println("Date         \t : \t"+this.date);
-        System.out.println("Source       \t : \t"+this.source);
-        System.out.println("Destination  \t : \t"+this.destination);
-        System.out.println("Time         \t : \t"+this.time);
+        System.out.println("ID           \t : \t" + this.id);
+        System.out.println("Date         \t : \t" + this.date);
+        System.out.println("Source       \t : \t" + this.source);
+        System.out.println("Destination  \t : \t" + this.destination);
+        System.out.println("Time         \t : \t" + this.time);
         System.out.println(" ");
         System.out.println("---------------------------------------------------------------------------------------");
     }
@@ -65,25 +65,25 @@ public class Trip{
         this.time = time;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public void getTripDetails(int id){
+    public void getTripDetails(int id) {
         System.out.println(" ");
         System.out.println("---------------------------------------------------------------------------------------");
         System.out.println("User Found !!");
         System.out.println(" ");
         System.out.println("Trip Details - ");
-        System.out.println("ID           \t : \t"+this.id);
-        System.out.println("Date         \t : \t"+this.date);
-        System.out.println("Source       \t : \t"+this.source);
-        System.out.println("Destination  \t : \t"+this.destination);
-        System.out.println("Time         \t : \t"+this.time);
+        System.out.println("ID           \t : \t" + this.id);
+        System.out.println("Date         \t : \t" + this.date);
+        System.out.println("Source       \t : \t" + this.source);
+        System.out.println("Destination  \t : \t" + this.destination);
+        System.out.println("Time         \t : \t" + this.time);
         System.out.println(" ");
         System.out.println("---------------------------------------------------------------------------------------");
     }
