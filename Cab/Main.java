@@ -17,11 +17,25 @@ public class Main{
         // Student student = null;
         
         // Implementing Switch case for different operations;
-    
-        System.out.println("Enter an option");
+        System.out.println(" ");
+        System.out.println("Welcome to the Cab Booking System created by Group 3");
+        System.out.println("-----------------------------------------------------");
+        System.out.println("Available options\n");
+        System.out.println("S  - Student registeration and Details");
+        System.out.println("T  - Requesting a new Trip");
+        System.out.println("C  - Check details of a proposed Trip");
+        System.out.println("A  - Accept a Trip");
+        System.out.println("R  - Reject a Trip");
+        System.out.println("L1 - Admin Login");
+        System.out.println("X  - Exit");
+        System.out.println("-----------------------------------------------------\n");
         char c = in.next().charAt(0);
         int id;
         String name;
+        if(c=='X'){
+            System.out.println("Good Bye !!");
+        }
+        else{
         switch(c){
 
             // New User is being registered 
@@ -93,4 +107,5 @@ public class Main{
             
         // }
     }
+}
 }
