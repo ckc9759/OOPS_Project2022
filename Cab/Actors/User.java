@@ -1,34 +1,29 @@
 package Actors;
 
-import java.util.*;
+// import java.util.*;
 
-import Exceptions.*;
+// import Exceptions.*;
 
 public class User {
     private String name;
-    private int id;
+    private String id;
     private long PhoneNumber;
 
-    public User(String name, int id, long PhoneNumber) {
+    public User(String name, String id, long PhoneNumber) {
         this.name = name;
         this.id = id;
         this.PhoneNumber = PhoneNumber;
     }
 
-    private User(){
+    // public Map<String, User> userMap = new HashMap<String, User>();
+    // // public Map<String, User> driverMap = new HashMap<String, User>();
 
-    }
-
-    private static User username = null;
-    public static User getInstance() {
-        if (username == null) {
-            username = new User();
-        }
-        return username;
-    }
-
-    public Map<Integer, User> userMap = new HashMap<Integer, User>();
-    public Map<Integer, User> driverMap = new HashMap<Integer, User>();
+    // public void register(User user) throws CreateException {
+    //     if (user == null || userMap.containsKey(user.getId())) {
+    //         throw new CreateException("User already registered !!");
+    //     }
+    //     userMap.put(user.getId(), user);
+    // }
 
     public void ShowDetails() {
         System.out.println(" ");
@@ -42,16 +37,6 @@ public class User {
         System.out.println(" ");
         System.out.println("---------------------------------------------------------------------------------------");
     }
-
-    public User registerUser(String name, int id, long PhoneNumber)throws CreateException{
-        User user = new User(name, id, PhoneNumber);
-        if(user==null||userMap.containsKey(user.getId())){
-            throw new CreateException("User already registered !!");
-        }
-        userMap.put(user.getId(), user);
-        return user;
-    }
-
 
     public String getName() {
         return name;
@@ -69,11 +54,11 @@ public class User {
         this.PhoneNumber = PhoneNumber;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 }
