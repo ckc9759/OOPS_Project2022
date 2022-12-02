@@ -1,9 +1,9 @@
 import java.util.*;
-import java.util.Scanner;
 
 import Exceptions.*;
 import Actors.*;
 import Cab.CabService;
+import Cab.RegisterUser;
 import Cab.UserService;
 
 // Import the packages created 
@@ -35,11 +35,11 @@ public class Main {
         UserService userservice = UserService.getInstance();
 
         while (cont) {
-            
+
             System.out.print("Enter an option ");
             Scanner in = new Scanner(System.in);
             char c = in.next().charAt(0);
-            int id;
+            String id;
             String name;
             if (c == 'X') {
                 System.out.println("Good Bye !!");
@@ -52,20 +52,20 @@ public class Main {
                     case 'S':
                         System.out.println("Enter your name, ID and phone no.");
                         name = in.next();
-                        id = in.nextInt();
+                        id = in.next();
                         long PhoneNumber = in.nextLong();
-                        User NewStudent = new User(name, id, PhoneNumber);
-                        try{
-                            NewStudent.registerUser(name,id,PhoneNumber);
+                        // User NewStudent = new User(name, id, PhoneNumber);
+                        RegisterUser NewStudent = new RegisterUser(name, id, PhoneNumber);
+                        try {
+                            NewStudent.register(NewStudent);
                             NewStudent.ShowDetails();
-                        }
-                        catch(CreateException e){
+                        } catch (CreateException e) {
                             e.getMessage();
                         }
                         System.out.println("Continue (y/n)...");
                         char test2 = in.next().charAt(0);
-                        if(test2!='y'){
-                            cont=false;
+                        if (test2 != 'y') {
+                            cont = false;
                         }
                         break;
 
@@ -76,7 +76,7 @@ public class Main {
                         char trip = in.next().charAt(0);
                         if (trip == 'y') {
                             System.out.println("Enter your ID");
-                            id = in.nextInt();
+                            id = in.next();
                             System.out.println("Enter your date of travel in (dd-mm-yyyy) format");
                             String date = in.next();
                             System.out.println("Enter your source location");
@@ -93,8 +93,8 @@ public class Main {
                         }
                         System.out.println("Continue (y/n)...");
                         char test3 = in.next().charAt(0);
-                        if(test3!='y'){
-                            cont=false;
+                        if (test3 != 'y') {
+                            cont = false;
                         }
                         break;
 
@@ -106,11 +106,11 @@ public class Main {
                         // How to get the parameters using the ID (Getters and Setters)
                         // Appropriate message displayed if ID has no linked travels
 
-                        id = in.nextInt();
+                        id = in.next();
                         System.out.println("Continue (y/n)...");
                         char test4 = in.next().charAt(0);
-                        if(test4!='y'){
-                            cont=false;
+                        if (test4 != 'y') {
+                            cont = false;
                         }
                         break;
 
@@ -121,11 +121,11 @@ public class Main {
                         // showDetails() function call
                         // if user has an active trip, give him option to accept
                         // otherwise proper message : Please create a trip first !!
-                        id = in.nextInt();
+                        id = in.next();
                         System.out.println("Continue (y/n)...");
                         char test5 = in.next().charAt(0);
-                        if(test5!='y'){
-                            cont=false;
+                        if (test5 != 'y') {
+                            cont = false;
                         }
                         break;
 
@@ -135,11 +135,11 @@ public class Main {
                         // showDetails() function call
                         // if user has an active trip, give him option to reject
                         // otherwise proper message : Please create a trip first !!
-                        id = in.nextInt();
+                        id = in.next();
                         System.out.println("Continue (y/n)...");
                         char test6 = in.next().charAt(0);
-                        if(test6!='y'){
-                            cont=false;
+                        if (test6 != 'y') {
+                            cont = false;
                         }
                         break;
                 }
