@@ -20,10 +20,11 @@ public class RegisterTrip extends Trip {
     public static Map<String, Trip> userTrip = new HashMap<String, Trip>();
 
     public void register(Trip trip) throws CreateException {
-        // if (trip == null || userTrip.containsKey(trip.getId())) {
-        // System.out.println("User already registered with the same ID!!");
-        // throw new CreateException("User already registered !!");
-        // }
+        if (trip == null || userTrip.containsKey(trip.getId())) {
+           System.out.println("User already registered with the same ID!!");
+           trip.getTripDetails(trip.getId());
+           throw new CreateException("User already registered !!");
+        }
         // Put the ID and trip object in the userMap
         userTrip.put(trip.getId(), trip);
 
