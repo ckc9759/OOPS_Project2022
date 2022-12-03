@@ -2,9 +2,7 @@ import java.util.*;
 
 import Exceptions.*;
 import Actors.*;
-import Cab.CabService;
-import Cab.RegisterUser;
-import Cab.UserService;
+import Cab.*;
 
 // Import the packages created 
 
@@ -56,12 +54,13 @@ public class Main {
                         long PhoneNumber = in.nextLong();
                         // User NewStudent = new User(name, id, PhoneNumber);
                         RegisterUser NewStudent = new RegisterUser(name, id, PhoneNumber);
+
                         try {
                             NewStudent.register(NewStudent);
-                            NewStudent.ShowDetails();
                         } catch (CreateException e) {
                             e.getMessage();
                         }
+
                         System.out.println("Continue (y/n)...");
                         char test2 = in.next().charAt(0);
                         if (test2 != 'y') {
@@ -85,8 +84,12 @@ public class Main {
                             String destination = in.next();
                             System.out.println("Enter your departure time in (hh:mm) format");
                             String time_string = in.next();
-                            Trip NewTrip = new Trip(id, date, source, destination, time_string);
-                            NewTrip.ShowDetails();
+                            RegisterTrip NewTrip = new RegisterTrip(id, date, source, destination, time_string);
+                            try {
+                                NewTrip.register(NewTrip);
+                            } catch (CreateException e) {
+                                e.getMessage();
+                            }
                         } else {
                             System.out.println("Good Bye !!");
                             cont = false;
