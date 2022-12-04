@@ -163,6 +163,22 @@ public class Main {
                              cont = false;
                          }
                          break;
+                        case "L2" :
+                    	 if (Admin.getLogin())
+                    	 {
+                    		 Admin.setLogin(false);
+                    	 }
+                    	 else 
+                    	 {
+                    		 try 
+                    		 {
+                    	       throw new LoginException("Cannot log out without logging in first ");
+                    	     }
+                    	        catch (LoginException ex) 
+                    		 {
+                    	            System.out.println(ex.getMessage());
+                    	     }
+                    	 }
                      default :
                          System.out.println("That is not a valid option");
                          break;
