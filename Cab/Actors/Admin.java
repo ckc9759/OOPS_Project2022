@@ -1,8 +1,7 @@
 package Actors;
+import java.util.*;
 import Cab.CabService;
-// import java.util.*;
-
-// import Exceptions.*;
+import Exceptions.*;
 
 public class Admin {
     private String username;
@@ -30,9 +29,9 @@ public class Admin {
     		{
     			try 
     			{
-     	            throw new MyException("Incorrect Pssword");
+     	            throw new AdminException("Incorrect Pssword");
      	        }
-     	        catch (MyException ex) 
+     	        catch (AdminException ex) 
      		    {
      	   
      	            System.out.println(ex.getMessage());
@@ -44,13 +43,10 @@ public class Admin {
     	{
     		 try 
     		 {
-    	       throw new MyException("You are not a registered user");
+    	       throw new AdminException("You are not a registered user");
     	     }
-    	        catch (MyException ex) 
+    	        catch (AdminException ex) 
     		 {
-    	            System.out.println("Caught");
-    	 
-    	            // Print the message from MyException object
     	            System.out.println(ex.getMessage());
     	     }
     	}
@@ -79,3 +75,4 @@ public class Admin {
     }
     
 }
+
