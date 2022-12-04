@@ -1,21 +1,21 @@
 import java.util.*;
-import java.util.Scanner;
-import java.text.SimpleDateFormat;
 
-import Exceptions.DriverUnavailable;
+import Exceptions.*;
 import Actors.*;
+import Cab.*;
 
 // Import the packages created 
 
 public class Main {
     public static void main(String[] args) {
 
-        // CabService NewCab = new CabService.getCab();
+        CabService NewCab = CabService.getInstance();
         // Source start = new Source();
         // Destination end = new Destination();
         // Student student = null;
 
         // Implementing Switch case for different operations;
+
         System.out.println(" ");
         System.out.println("Welcome to the Cab Booking System created by Group 3");
         System.out.println("-----------------------------------------------------");
@@ -29,12 +29,15 @@ public class Main {
         System.out.println("X  - Exit");
         System.out.println("-----------------------------------------------------\n");
         boolean cont = true;
+
+        UserService userservice = UserService.getInstance();
+
         while (cont) {
-            
+
             System.out.print("Enter an option ");
             Scanner in = new Scanner(System.in);
             String str = in.next();
-            int id;
+            String id;
             String name;
                 switch (str) {
 
@@ -43,14 +46,21 @@ public class Main {
                     case "S":
                         System.out.println("Enter your name, ID and phone no.");
                         name = in.next();
-                        id = in.nextInt();
+                        id = in.next();
                         long PhoneNumber = in.nextLong();
-                        User NewStudent = new User(name, id, PhoneNumber);
-                        NewStudent.ShowDetails();
+                        // User NewStudent = new User(name, id, PhoneNumber);
+                        RegisterUser NewStudent = new RegisterUser(name, id, PhoneNumber);
+
+                        try {
+                            NewStudent.register(NewStudent);
+                        } catch (CreateException e) {
+                            e.getMessage();
+                        }
+
                         System.out.println("Continue (y/n)...");
-                        char test = in.next().charAt(0);
-                        if(test!='y'){
-                            cont=false;
+                        char test2 = in.next().charAt(0);
+                        if (test2 != 'y') {
+                            cont = false;
                         }
                         break;
 
@@ -61,7 +71,7 @@ public class Main {
                         char trip = in.next().charAt(0);
                         if (trip == 'y') {
                             System.out.println("Enter your ID");
-                            id = in.nextInt();
+                            id = in.next();
                             System.out.println("Enter your date of travel in (dd-mm-yyyy) format");
                             String date = in.next();
                             System.out.println("Enter your source location");
@@ -70,10 +80,19 @@ public class Main {
                             String destination = in.next();
                             System.out.println("Enter your departure time in (hh:mm) format");
                             String time_string = in.next();
-                            Trip NewTrip = new Trip(id, date, source, destination, time_string);
-                            NewTrip.ShowDetails();
+                            RegisterTrip NewTrip = new RegisterTrip(id, date, source, destination, time_string);
+                            try {
+                                NewTrip.register(NewTrip);
+                            } catch (CreateException e) {
+                                e.getMessage();
+                            }
                         } else {
                             System.out.println("Good Bye !!");
+                            cont = false;
+                        }
+                        System.out.println("Continue (y/n)...");
+                        char test3 = in.next().charAt(0);
+                        if (test3 != 'y') {
                             cont = false;
                         }
                         break;
@@ -86,7 +105,12 @@ public class Main {
                         // How to get the parameters using the ID (Getters and Setters)
                         // Appropriate message displayed if ID has no linked travels
 
-                        id = in.nextInt();
+                        id = in.next();
+                        System.out.println("Continue (y/n)...");
+                        char test4 = in.next().charAt(0);
+                        if (test4 != 'y') {
+                            cont = false;
+                        }
                         break;
 
                     case "A":
@@ -96,7 +120,12 @@ public class Main {
                         // showDetails() function call
                         // if user has an active trip, give him option to accept
                         // otherwise proper message : Please create a trip first !!
-                        id = in.nextInt();
+                        id = in.next();
+                        System.out.println("Continue (y/n)...");
+                        char test5 = in.next().charAt(0);
+                        if (test5 != 'y') {
+                            cont = false;
+                        }
                         break;
 
                     case "R":
@@ -105,18 +134,40 @@ public class Main {
                         // showDetails() function call
                         // if user has an active trip, give him option to reject
                         // otherwise proper message : Please create a trip first !!
-                        id = in.nextInt();
+                        id = in.next();
+                        System.out.println("Continue (y/n)...");
+                        char test6 = in.next().charAt(0);
+                        if (test6 != 'y') {
+                            cont = false;
+                        }
                         break;
-                  default :
-                        System.out.println("That is not a valid option");
-                        break;
-                }
-                // try{
-                // student=CabService.RegisterStudent();
-                // }
-                // catch{
+                     case "L1" :
+                    	 System.out.println("Enter your username, Password");
+                    	 String uname,pwd;
+                         uname = in.next();
+                         pwd = in.next();
+                        // setUsername(uname);
+                         //setAid(Id);
+                         // User NewStudent = new User(name, id, PhoneNumber);
+                         AdminLogin(uname,pwd);
 
-                // }
+                         try {
+                             NewStudent.register(NewStudent);
+                         } catch (CreateException e) {
+                             e.getMessage();
+                         }
+
+                         System.out.println("Continue (y/n)...");
+                         char t = in.next().charAt(0);
+                         if (t != 'y') {
+                             cont = false;
+                         }
+                         break;
+                     default :
+                         System.out.println("That is not a valid option");
+                         break;
+                }
+            }
         }
     }
 
