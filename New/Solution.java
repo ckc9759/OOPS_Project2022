@@ -33,7 +33,7 @@ public class Solution{
         }    
         if(flag==0){
         //outStream.println();
-        outStream.println(fname+" "+" "+id+" "+phone);
+        outStream.println(fname+" "+id+" "+phone);
         System.out.println("New User Registered. Details:");}
         outStream.close();
         inStream.close();
@@ -55,7 +55,6 @@ public class Solution{
         String src=inStream.nextLine();
         String dest=inStream.nextLine();
         String time=inStream.nextLine();
-        System.out.println(date+src+dest+time);
         Trip trip=new Trip(date, src, dest, time);
         while(inStream.hasNextLine()){
             String userdata=inStream.nextLine();
@@ -92,6 +91,33 @@ public class Solution{
         file1.renameTo(file);
     }
 
+
+    //Admin Authentication
+    public static boolean adminAuthentication(String name, String password){
+        Scanner inStream=null;  
+        try{
+            inStream=new Scanner(new FileInputStream("AdminFile.txt"));
+        }catch(FileNotFoundException e){
+            System.out.println("Error Occured");
+        }
+        int flag=0;
+        while(inStream.hasNextLine()){
+            String[] str=inStream.nextLine().split(" ",5);
+            //System.out.println(str[0]+" "+str[1]+" "+str[2]+" "+str[3]);
+            if(str[0].equals(name)&&str[1].equals(password)){
+                System.out.println("Welcome admin "+name);
+                flag=1;
+                inStream.close();
+                return true;
+            }
+        }    
+        if(flag==0){
+        System.out.println("Wrong Username/Password!");
+        System.out.println("Please try again");
+        }
+        inStream.close();
+        return false;
+    }
     public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
         
@@ -102,16 +128,12 @@ public class Solution{
         System.out.println("-----------------------------------------------------");
         System.out.println("Available options\n");
         System.out.println("S  - Student registeration and Details");
-        System.out.println("T  - Requesting a new Trip");               //Needs to be changed so that only S/A mode accessed from here
-        System.out.println("C  - Check details of a proposed Trip");
-        System.out.println("A  - Accept a Trip");
-        System.out.println("R  - Reject a Trip");
         System.out.println("L1 - Admin Login");
         System.out.println("X  - Exit");
         System.out.println("-----------------------------------------------------\n");
         boolean check=true; //Enter/Exit Service
         while(check){
-        System.out.println("Enter S or A");
+        System.out.println("Enter S, L1 or X");
         String str=sc.next();
         //Student Mode
         if(str.equals("S")){
@@ -119,7 +141,6 @@ public class Solution{
             String name = sc.next();
             String id = sc.next();
             String PhoneNumber = sc.next();
-            System.out.println(name+id+PhoneNumber);
             User NewStudent = new User(name, id, PhoneNumber);
             int good=userAuthentication(name, id, PhoneNumber);
 
@@ -136,7 +157,11 @@ public class Solution{
             }
             boolean cont= true;
             while(cont){
-            System.out.println("Enter T/C/A/R"); //new println lines to be added to show what option does what
+            System.out.println("Enter one of the following options"); 
+            System.out.println("T  - Requesting a new Trip");               
+            System.out.println("C  - Check details of a proposed Trip");
+            System.out.println("A  - Accept a Trip");
+            System.out.println("R  - Reject a Trip");
             //String buffer=sc.nextLine();
             String option=sc.next();
             switch(option){
@@ -264,8 +289,123 @@ public class Solution{
 
 
         //Admin mode code from here
-        else{
+        else if (str.equals("L1")){
+            Admin currentadmin=null;
+            boolean cont1=true;
+            while(cont1){
+            System.out.println("Enter admin username and password in the following format:");
+            System.out.println("<Username> <Password>");
+            String admin=sc.next();
+            String pass=sc.next();
+            currentadmin=new Admin(admin,pass);
+            boolean admincheck=adminAuthentication(admin, pass);
+            if(admincheck==false){
+                cont1=true;
+                continue;
+            }
+            else{
+                cont1=false;
+                break;
+            }
+            }
+            System.out.println("-----------------------------------------------------");
+            System.out.println("Following modes of operation");
+            System.out.println("AC  - View details of all registered students");
+            System.out.println("E   - Charge all students");
+            System.out.println("L2  - Log out as admin");
+            System.out.println("-----------------------------------------------------");
+            int flag=0;
+            boolean cont2=true;
+            while(cont2){
+            System.out.println("Enter mode of operation");
+            String adminchoice=sc.next();
+                switch(adminchoice){
+                    case "AC":
+                            System.out.format("%-10s %-5s %-11s", "Name", "ID", "Phone No:");
+                            System.out.println();
+                            Scanner inStream=null;  
+                            try{
+                                inStream=new Scanner(new FileInputStream("UsersFile.txt"));
+                            }catch(FileNotFoundException e){
+                                System.out.println("Error Occured");
+                            }
+                            while(inStream.hasNextLine()){
+                                String[] s=inStream.nextLine().split(" ", 10);
+                                System.out.format("%-10s %-5s %-11s", s[0], s[1], s[2]);
+                                System.out.println();
+                            }
+                            inStream.close();
+                            System.out.println("Continue? (Y/N)...");
+                            char test5 = sc.next().charAt(0);
+                            if(test5=='N'){
+                                 cont2=false;
+                            }
+                            break;
+                    case "E": 
+                            Fares.farelist=new TreeMap<String,String>();
+                            File[] f=new File("Trips").listFiles();
+                            for(File filename: f){
+                            Scanner fareStream=null;
+                            try{
+                                fareStream=new Scanner(new FileInputStream(filename));
+                            }catch(FileNotFoundException e){
+                                System.out.println("Error Occured");
+                            }
+                            String id=fareStream.nextLine();
+                            String date=fareStream.nextLine();
+                            String src=fareStream.nextLine();
+                            String dest=fareStream.nextLine();
+                            String time=fareStream.nextLine();
+                            while(fareStream.hasNextLine()){
+                                String[] userdata=fareStream.nextLine().split(" ",10);
+                               
+                                if(!Fares.farelist.containsKey(userdata[1])){
+                                    Fares.farelist.put(userdata[1],Fares.getCost(src+dest));
+                                }
+                                else{
+                                    String previouscost=Fares.farelist.get(userdata[1]);
+                                    Fares.farelist.put(userdata[1],previouscost+Fares.getCost(src+dest));
+                                }                                
+                            }                                                  
+                            fareStream.close();
+                        }
+                            System.out.format("%-5s %-6s", "ID","Charges");
+                            System.out.println();
+                            for(Map.Entry<String,String> m: Fares.farelist.entrySet()){
+                                System.out.format("%-5s %-6s", m.getKey(), m.getValue());
+                                System.out.println();
+                            }
+                            System.out.println("Continue? (Y/N)...");
+                            char test6 = sc.next().charAt(0);
+                            if(test6=='N'){
+                                 cont2=false;
+                            }
+                            break;
+                        case "L2":
+                            System.out.println(currentadmin.getName()+" logged out");
+                            flag=1;
+                            break;  
+                        default: 
+                            System.out.println("Choose a valid option");
+                            System.out.println("Continue? (Y/N)...");
+                            char test7 = sc.next().charAt(0);
+                            if(test7=='N'){
+                                 cont2=false;
+                            }
+                            break;                    
 
+                }
+                if(flag==1){
+                    break;}
+            }
+
+        }
+        else if(str.equals("X")){
+            System.out.println("Exiting....");
+            break;
+        }
+        else{
+            System.out.println("Please enter valid option");
         }
         System.out.println("Continue(choose another mode)? (Y/N)...");
                             char test6 = sc.next().charAt(0);
