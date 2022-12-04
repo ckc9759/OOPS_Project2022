@@ -66,12 +66,12 @@ public class Admin {
     public void setPwd(String Pwd) {
         this.Pwd = Pwd;
     }
-    public boolean getLogin() {
-        return this.isLogin;
+   public static boolean getLogin() {
+        return Admin.isLogin;
     }
 
-    public void setLogin(boolean b) {
-        this.isLogin = b;
+    public static void setLogin(boolean b) {
+        Admin.isLogin = b;
     }
     
 }
