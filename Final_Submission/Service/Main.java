@@ -402,11 +402,11 @@ public class Main {
                                 } catch (FileNotFoundException e) {
                                     System.out.println("Error Occured");
                                 }
-                                // String id = fareStream.nextLine();
-                                // String date = fareStream.nextLine();
+                                String id = fareStream.nextLine();
+                                String date = fareStream.nextLine();
                                 String src = fareStream.nextLine();
                                 String dest = fareStream.nextLine();
-                                // String time = fareStream.nextLine();
+                                String time = fareStream.nextLine();
                                 while (fareStream.hasNextLine()) {
                                     String[] userdata = fareStream.nextLine().split(" ", 10);
 
