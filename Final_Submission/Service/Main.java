@@ -156,7 +156,7 @@ public class Main {
         System.out.println("Welcome to the Cab Booking System created by Group 2");
         System.out.println("-----------------------------------------------------");
         System.out.println("Available options\n");
-        System.out.println("S  - Student registeration and Details");
+        System.out.println("S  - Student Registration and Details");
         System.out.println("L1 - Admin Login");
         System.out.println("X  - Exit");
         System.out.println("-----------------------------------------------------\n");
