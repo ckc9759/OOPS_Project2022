@@ -141,7 +141,9 @@ public class Main {
     public static void validateTime(String time) throws ValidTimeException {
         if (!time.contains("PM")) {
             throw new ValidTimeException("Wrong time format, enter time with PM/AM in Upper Case");
-        } 
+        } else if(!((time.equals("2PM"))||(time.equals("3PM"))||(time.equals("4PM"))||(time.equals("5PM")))){
+            throw new ValidTimeException("We only provide cabs at 2PM/3PM/4PM/5PM");
+        }
 
     }
 
