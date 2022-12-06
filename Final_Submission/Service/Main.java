@@ -133,7 +133,7 @@ public class Main {
     }
 
     public static void validateCity(String city) throws ValidCityException {
-        if (!((city.equals("Pilani")) || (city.equals("Delhi")) || (city.equals("Jaipur")))) {
+        if (!((city.equals("Pilani")) || (!city.equals("Delhi")) || (!city.equals("Jaipur")))) {
             throw new ValidCityException(city + " is not currently serviced by us");
         }
     }
