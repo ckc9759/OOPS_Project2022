@@ -147,6 +147,8 @@ public class Solution1{
 
         System.out.println(" ");
         System.out.println("Welcome to the Cab Booking System created by Group 2");
+        System.out.println("We provide cabs to and from the cities of Pilani, Delhi and Jaipur");
+        System.out.println("Cabs are only available at: 2PM  3PM  4PM  5PM");
         System.out.println("-----------------------------------------------------");
         System.out.println("Available options\n");
         System.out.println("S  - Student registeration and Details");
